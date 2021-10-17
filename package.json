@@ -4,7 +4,8 @@
   "description": "study react server",
   "main": "src/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,9 @@
   },
   "homepage": "https://github.com/Hyacinth-zgy/react-server#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0"
   }
 }
