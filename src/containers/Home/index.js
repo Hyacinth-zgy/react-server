@@ -1,8 +1,4 @@
 const React = require('react')
-const Home = ()=>{
-    return <div>home</div>
-}
-
-module.exports = {
-    default:Home
+export default  ()=>{
+    return <div>基本的服务端渲染代码</div>
 }

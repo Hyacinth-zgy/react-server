@@ -1,20 +1,22 @@
-const express = require('express');
+import express from 'express';
+import React from 'react';
+import Home from './containers/Home';
+import {renderToString} from 'react-dom/server'
 const app = express();
-
+const content= renderToString(<Home />);
+console.log(content)
 app.get('/',function(req,res) {
-    res.send(
-      `
-        <html>
-          <head>
-            <title>hello</title>
-          </head>
-          <body>
-            <h1>first lesson</h1>
-            <p>hello word</p>
-          </body>
-        </html>
-      `  
+    res.send(`
+      <html>
+        <head>
+          <title>hello</title>
+        </head>
+        <body>
+          ${content}
+        </body>
+      </html>`
     )
-})
+  }
+)
 
 const server = app.listen(3000)
