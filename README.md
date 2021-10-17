@@ -22,3 +22,11 @@ React代码在客户端上执行，消耗的是客户端的性能
 
 # 搜索错误 
 stackoverflow.com
+
+# webpack自动打包
+配置上--watch就可以自动打包，被依赖的文件
+
+# 打包后的文件自动被nodemon启动
+"start:nodemon": "nodemon --watch build --exec node \"./build/bundle.js\"",
+watch build 文件 ，改变后执行（exec）  node \"./build/bundle.js\"
+

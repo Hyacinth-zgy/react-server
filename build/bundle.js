@@ -16,7 +16,7 @@
   \**************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));\nvar React = __webpack_require__(/*! react */ \"react\");\n\nexports[\"default\"] = function () {\n    return React.createElement(\n        'div',\n        null,\n        '\\u57FA\\u672C\\u7684\\u670D\\u52A1\\u7AEF\\u6E32\\u67D3\\u4EE3\\u7801'\n    );\n};\n\n//# sourceURL=webpack://react-server/./src/containers/Home/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));\nvar React = __webpack_require__(/*! react */ \"react\");\n\nexports[\"default\"] = function () {\n    return React.createElement(\n        'div',\n        null,\n        '\\u57FA\\u672C\\u7684\\u670D\\u52A1\\u7AEF\\u6E32s\\u67D3\\u4EE3\\u7801SSsR'\n    );\n};\n\n//# sourceURL=webpack://react-server/./src/containers/Home/index.js?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n})
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Home = __webpack_require__(/*! ./containers/Home */ \"./src/containers/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\nvar content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));\nconsole.log(content);\napp.get('/', function (req, res) {\n  res.send('\\n      <html>\\n        <head>\\n          <title>hello</title>\\n        </head>\\n        <body>\\n          ' + content + '\\n        </body>\\n      </html>');\n});\n\nvar server = app.listen(3000);\n\n//# sourceURL=webpack://react-server/./src/index.js?");
+eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Home = __webpack_require__(/*! ./containers/Home */ \"./src/containers/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\n// 传入react组件\n\n// 这里引入react提供用于服务端渲染的方法renderToString，将react组件转换为字符串\nvar content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));\nconsole.log(content);\napp.get('/', function (req, res) {\n  res.send('\\n      <html>\\n        <head>\\n          <title>hello</title>\\n        </head>\\n        <body>\\n          ' + content + '\\n        </body>\\n      </html>');\n});\n\nvar server = app.listen(3000);\n\n//# sourceURL=webpack://react-server/./src/index.js?");
 
 /***/ }),
 
