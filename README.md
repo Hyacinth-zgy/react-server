@@ -30,3 +30,7 @@ stackoverflow.com
 "start:nodemon": "nodemon --watch build --exec node \"./build/bundle.js\"",
 watch build 文件 ，改变后执行（exec）  node \"./build/bundle.js\"
 
+# npm run npmrunall
+执行下面的指令 代表并行的(--parallel) 执行 以 build:** 开头的指令
+"npmrunall": "npm-run-all --parallel dev:**"
+

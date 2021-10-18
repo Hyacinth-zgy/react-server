@@ -16,7 +16,7 @@
   \**************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));\nvar React = __webpack_require__(/*! react */ \"react\");\n\nexports[\"default\"] = function () {\n    return React.createElement(\n        'div',\n        null,\n        '\\u57FA\\u672C\\u7684\\u670D\\u52A1\\u7AEF\\u6E32s\\u67D3\\u4EE3\\u7801SSsR'\n    );\n};\n\n//# sourceURL=webpack://react-server/./src/containers/Home/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));\nvar React = __webpack_require__(/*! react */ \"react\");\n\nexports[\"default\"] = function () {\n    return React.createElement(\n        'div',\n        null,\n        '\\u57FA\\u672C\\u7684\\u670D\\u52A1\\u7AEF\\u6E32s\\u67D3\\u4EE3\\u7801SSsRzgy'\n    );\n};\n\n//# sourceURL=webpack://react-server/./src/containers/Home/index.js?");
 
 /***/ }),
 
