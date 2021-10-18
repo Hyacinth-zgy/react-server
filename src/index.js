@@ -18,7 +18,7 @@ app.get("/", function (req, res) {
           <title>hello</title>
         </head>
         <body>
-          ${content}
+          <div id='root'>${content}</div>
           <script src="/index.js"></script>
         </body>
       </html>`);
