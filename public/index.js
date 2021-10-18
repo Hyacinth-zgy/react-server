@@ -16,7 +16,7 @@
   \*****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _Home = __webpack_require__(/*! ../containers/Home */ \"./src/containers/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconsole.log(\"我是被请求的静态文件\");\n\n// 同构的时候这里不要使用render方法，\n_reactDom2.default.hydrate(_react2.default.createElement(_Home2.default, null), document.getElementById(\"root\"));\n\n//# sourceURL=webpack://react-server/./src/client/index.js?");
+eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _Home = __webpack_require__(/*! ../containers/Home */ \"./src/containers/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconsole.log('我是用来同构的react代码');\n\n// 同构的时候这里不要使用render方法，\n_reactDom2.default.hydrate(_react2.default.createElement(_Home2.default, null), document.getElementById(\"root\"));\n\n//# sourceURL=webpack://react-server/./src/client/index.js?");
 
 /***/ }),
 

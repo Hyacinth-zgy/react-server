@@ -1,4 +1,4 @@
-console.log("我是被请求的静态文件");
+console.log('我是用来同构的react代码')
 import React from "react";
 import ReactDOM from "react-dom";
 import Home from "../containers/Home";
