@@ -3,8 +3,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "../Routes";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+
+// 创建redux仓库
+const reducer = (state = { name: "dell" }, action) => {
+  return state;
+};
+const store = createStore(reducer);
+
 const App = () => {
-  return <BrowserRouter>{Routes}</BrowserRouter>;
+  return (
+    <Provider store={store}>
+      <BrowserRouter>{Routes}</BrowserRouter>;
+    </Provider>
+  );
 };
 import Home from "../containers/Home";
 // 同构的时候这里不要使用render方法，
