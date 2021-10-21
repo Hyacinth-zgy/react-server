@@ -40,3 +40,10 @@ React做服务器端渲染的时候，服务端只会将基础代码渲染出来
 # 解决方法：同构
 一套React代码在服务端执行一次，然后在客户端也执行一次
 
+# 使用 webpack-merge 来合并webpakpack配置
+
+# 配置 服务端渲染路由和客户端渲染路由
+服务端渲染路由要使用 StaticRouter ，并且需要传入loacation 和 context属性
+    location是未来让服务端感知到前端请求的路由
+    context是为了组件之间传值通信
+浏览器端渲染路由要使用 BrowserRouter 
