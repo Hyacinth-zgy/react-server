@@ -20,13 +20,13 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/server/index.js":
+/*!*****************************!*\
+  !*** ./src/server/index.js ***!
+  \*****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Home = __webpack_require__(/*! ./containers/Home */ \"./src/containers/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\n// 传入react组件\n\n// 这里引入react提供用于服务端渲染的方法renderToString，将react组件转换为字符串\nvar content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));\n\n// 当请求的资源是是一个静态文件时，到public文件夹下面去寻找\napp.use(_express2.default.static(\"public\"));\n\n// 监听 / 路由\napp.get(\"/\", function (req, res) {\n  res.send(\"\\n      <html>\\n        <head>\\n          <title>hello</title>\\n        </head>\\n        <body>\\n          <div id='root'>\" + content + \"</div>\\n          <script src=\\\"/index.js\\\"></script>\\n        </body>\\n      </html>\");\n});\n\nvar server = app.listen(3000);\n\n//# sourceURL=webpack://react-server/./src/index.js?");
+eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Home = __webpack_require__(/*! ../containers/Home */ \"./src/containers/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\n// 传入react组件\n\n// 这里引入react提供用于服务端渲染的方法renderToString，将react组件转换为字符串\nvar content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));\n\n// 当请求的资源是是一个静态文件时，到public文件夹下面去寻找\napp.use(_express2.default.static(\"public\"));\n\n// 监听 / 路由\napp.get(\"/\", function (req, res) {\n  res.send(\"\\n      <html>\\n        <head>\\n          <title>hello</title>\\n        </head>\\n        <body>\\n          <div id='root'>\" + content + \"</div>\\n          <script src=\\\"/index.js\\\"></script>\\n        </body>\\n      </html>\");\n});\n\nvar server = app.listen(3000);\n\n//# sourceURL=webpack://react-server/./src/server/index.js?");
 
 /***/ }),
 
@@ -91,7 +91,7 @@ module.exports = require("react-dom/server");
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/server/index.js");
 /******/ 	
 /******/ })()
 ;
