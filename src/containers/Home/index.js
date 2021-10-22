@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../component/Header";
 import { connect } from "react-redux";
+import { getHomeList } from "../Home/store/actions";
 const Home = (props) => {
+  useEffect(() => {
+    props.getHomeList();
+  }, []);
   return (
     <div>
       <Header></Header>
@@ -19,5 +23,9 @@ const Home = (props) => {
 const mapStateToProps = (state) => ({
   name: state.home.name,
 });
-
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = (dispatch) => ({
+  getHomeList() {
+    dispatch(getHomeList());
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
