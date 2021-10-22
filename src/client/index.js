@@ -4,19 +4,11 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "../Routes";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-
-// 创建redux仓库
-const reducer = (state = { name: "dell" }, action) => {
-  return state;
-};
-// 使用中间件
-const store = createStore(reducer, applyMiddleware(thunk));
+import getStore from "../store";
 
 const App = () => {
   return (
-    <Provider store={store}>
+    <Provider store={getStore()}>
       <BrowserRouter>{Routes}</BrowserRouter>
     </Provider>
   );
