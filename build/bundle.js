@@ -66,7 +66,7 @@ eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar
   \*****************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports.render = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _Routes = __webpack_require__(/*! ../Routes */ \"./src/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar render = exports.render = function render(req, res) {\n  // 在服务端使用redux\n  var reducer = function reducer() {\n    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { name: \"dell\" };\n    var action = arguments[1];\n\n    return state;\n  };\n  var store = (0, _redux.createStore)(reducer);\n  // 传入react组件到renderToString\n  var content = (0, _server.renderToString)(_react2.default.createElement(\n    _reactRedux.Provider,\n    { store: store },\n    _react2.default.createElement(\n      _reactRouterDom.StaticRouter,\n      { location: req.path, context: {} },\n      _Routes2.default\n    )\n  ));\n  res.send(\"\\n        <html>\\n          <head>\\n            <title>hello</title>\\n          </head>\\n          <body>\\n            <div id='root'>\" + content + \"</div>\\n            <script src=\\\"/index.js\\\"></script>\\n          </body>\\n        </html>\");\n};\n\n//# sourceURL=webpack://react-server/./src/server/utill.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports.render = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _Routes = __webpack_require__(/*! ../Routes */ \"./src/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ \"redux-thunk\");\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar render = exports.render = function render(req, res) {\n  // 在服务端使用redux\n  var reducer = function reducer() {\n    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { name: \"dell\" };\n    var action = arguments[1];\n\n    return state;\n  };\n  var store = (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2.default));\n  // 传入react组件到renderToString\n  var content = (0, _server.renderToString)(_react2.default.createElement(\n    _reactRedux.Provider,\n    { store: store },\n    _react2.default.createElement(\n      _reactRouterDom.StaticRouter,\n      { location: req.path, context: {} },\n      _Routes2.default\n    )\n  ));\n  res.send(\"\\n        <html>\\n          <head>\\n            <title>hello</title>\\n          </head>\\n          <body>\\n            <div id='root'>\" + content + \"</div>\\n            <script src=\\\"/index.js\\\"></script>\\n          </body>\\n        </html>\");\n};\n\n//# sourceURL=webpack://react-server/./src/server/utill.js?");
 
 /***/ }),
 
@@ -127,6 +127,16 @@ module.exports = require("react-router-dom");
 /***/ ((module) => {
 
 module.exports = require("redux");
+
+/***/ }),
+
+/***/ "redux-thunk":
+/*!******************************!*\
+  !*** external "redux-thunk" ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = require("redux-thunk");
 
 /***/ })
 
