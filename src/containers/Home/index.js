@@ -26,6 +26,10 @@ const Home = (props) => {
   );
 };
 
+Home.loadData = function(){
+  // 在这里加载服务端的异步数据
+}
+
 const mapStateToProps = (state) => ({
   name: state.home.name,
   newsList: state.home.newsList,
