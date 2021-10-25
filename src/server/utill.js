@@ -17,7 +17,7 @@ export const render = function (req, res) {
       matchRoutes.push(route);
     }
   });
-
+  console.log(matchRoutes)
   // 让matchRoutes里面匹配到的组件的loadData都执行一遍
 
   // 在服务端使用redux
