@@ -82,4 +82,4 @@ React做服务器端渲染的时候，服务端只会将基础代码渲染出来
           state: ${JSON.stringify(store.getState())}
         }
       </script>
-
+然后使用 getClientStore 这个方法给client端store 初始化数据
