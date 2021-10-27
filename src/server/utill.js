@@ -12,6 +12,7 @@ export const render = function (req, res) {
   const store = getStore();
   const matchRoutes = [];
   Routes.some((route) => {
+    // matchPath 只会匹配一层路由
     const match = matchPath(req.path, route);
     if (match) {
       matchRoutes.push(route);

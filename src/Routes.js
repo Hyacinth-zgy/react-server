@@ -10,20 +10,27 @@ import Login from "./containers/Login";
 //   </div>
 // );
 
-
 // 下面是解决服务端获取数据的改造
 export default [
   {
     path: "/",
     component: Home,
-    exact: true,
+    // exact: true,
     loadData: Home.loadData,
-    key:'home'
+    key: "home",
+    routes: [
+      {
+        path: "/ttt",
+        component: Login,
+        exact: true,
+        key: "ttt",
+      },
+    ],
   },
   {
     path: "/login",
     component: Login,
     exact: true,
-    key:'login'
+    key: "login",
   },
 ];
