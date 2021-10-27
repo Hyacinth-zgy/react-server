@@ -26,9 +26,10 @@ const Home = (props) => {
   );
 };
 
-Home.loadData = function(){
+Home.loadData = function (store) {
   // 在这里加载服务端的异步数据
-}
+  return store.dispatch(getHomeList());
+};
 
 const mapStateToProps = (state) => ({
   name: state.home.name,
