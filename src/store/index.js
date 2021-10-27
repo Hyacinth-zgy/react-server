@@ -9,6 +9,6 @@ export const getStore = function () {
 };
 
 export const getClientStore = ()=>{
-  const defaultState = window.AudioContext.state;
+  const defaultState = window.context.state;
   return createStore(reducer,defaultState, applyMiddleware(thunk));
 } 

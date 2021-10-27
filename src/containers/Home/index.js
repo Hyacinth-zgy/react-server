@@ -9,7 +9,9 @@ function setList(data) {
 }
 const Home = (props) => {
   useEffect(() => {
-    props.getHomeList();
+    if (!props.newsList.length) {
+      props.getHomeList();
+    }
   }, []);
   return (
     <div>
