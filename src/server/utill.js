@@ -17,6 +17,20 @@ export const render = function (req, store) {
       </StaticRouter>
     </Provider>
   );
-
-  return `<html><head><title>hello</title></head><body><div id='root'>${content}</div><script src="/index.js"></script></body></html>`;
+  return `
+  <html>
+    <head>
+      <title>ssr</title>
+    </head>
+    <body>
+      <div id="root">${content}</div>
+      <script>
+        window.context = {
+          state: ${JSON.stringify(store.getState())}
+        }
+      </script>
+      <script src='/index.js'></script>
+    </body>
+  </html>
+`;
 };

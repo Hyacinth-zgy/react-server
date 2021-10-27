@@ -4,7 +4,11 @@ import {reducer as homeReducer} from "../containers/Home/store";
 const reducer = combineReducers({
   home: homeReducer,
 });
-const getStore = function () {
+export const getStore = function () {
   return createStore(reducer, applyMiddleware(thunk));
 };
-export default getStore;
+
+export const getClientStore = ()=>{
+  const defaultState = window.AudioContext.state;
+  return createStore(reducer,defaultState, applyMiddleware(thunk));
+} 

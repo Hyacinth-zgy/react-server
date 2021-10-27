@@ -2,7 +2,7 @@ import express from "express";
 import React from "react";
 import { matchRoutes } from "react-router-config";
 import Routes from "../Routes";
-import getStore from "../store/index";
+import {getStore} from "../store/index";
 // 这里引入react提供用于服务端渲染的方法renderToString，将react组件转换为字符串
 import { render } from "./utill";
 const app = express();
