@@ -10,8 +10,19 @@ const app = express();
 // 当请求的资源是是一个静态文件时，到public文件夹下面去寻找
 app.use(express.static("public"));
 
-// 请求转发
-// 来自客户端的请求不要直接请求服务器
+// 01请求转发
+// 请求不被代理的情况下:（使用了服务端绝对路径）
+// axios.get("http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE"),直接请求服务器地址
+
+// 02请求被代理的情况之下:（使用了相对路径）
+// 请求就会到达node服务器,node服务器作为客户端和真实服务器之间的中间层传递数据
+// axios.get("/api/news.json?secret=PP87ANTIPIRATE")
+// 被代理到真实的服务器
+// /api/news.json
+// req.url = news.json
+// proxyReqPathResolver: /ssr/api/news.json
+// http://47.95.113.63 + proxyReqPathResolver()
+// http://47.95.113.63/ssr/api/news.json
 app.use(
   "/api",
   proxy("http://47.95.113.63", {
@@ -34,15 +45,15 @@ app.get("/*", function (req, res) {
   // 让matchRoutes里面匹配到的组件的loadData都执行一遍
 
   const store = getStore();
-  // const storePromise = [];
-  // const matchedRoutes = matchRoutes(Routes, req.path);
-  // matchedRoutes.forEach((item) => {
-  //   if (item.route.loadData) {
-  //     storePromise.push(item.route.loadData(store));
-  //   }
-  // });
-  // Promise.all(storePromise).then(() => {
-  res.send(render(req, store));
-  // });
+  const storePromise = [];
+  const matchedRoutes = matchRoutes(Routes, req.path);
+  matchedRoutes.forEach((item) => {
+    if (item.route.loadData) {
+      storePromise.push(item.route.loadData(store));
+    }
+  });
+  Promise.all(storePromise).then(() => {
+    res.send(render(req, store));
+  });
 });
 const server = app.listen(3000);
