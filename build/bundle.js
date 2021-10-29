@@ -36,7 +36,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));
   \**********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports.getHomeList = undefined;\nexports.setList = setList;\n\nvar _contants = __webpack_require__(/*! ./contants */ \"./src/containers/Home/store/contants.js\");\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction setList(list) {\n  return {\n    type: _contants.SET_HOME_LIST,\n    value: list\n  };\n}\nvar getHomeList = exports.getHomeList = function getHomeList() {\n  return function (dispatch) {\n    return _axios2.default.get(\"http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE\").then(function (res) {\n      var data = res.data.data;\n      dispatch(setList(data));\n    });\n  };\n};\n\n//# sourceURL=webpack://react-server/./src/containers/Home/store/actions.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports.getHomeList = undefined;\nexports.setList = setList;\n\nvar _contants = __webpack_require__(/*! ./contants */ \"./src/containers/Home/store/contants.js\");\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction setList(list) {\n  return {\n    type: _contants.SET_HOME_LIST,\n    value: list\n  };\n}\nvar getHomeList = exports.getHomeList = function getHomeList() {\n  // http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRAT\n  return function (dispatch) {\n    return _axios2.default.get(\"/api/news.json?secret=PP87ANTIPIRATE\").then(function (res) {\n      console.log(res);\n      var data = res.data.data;\n      dispatch(setList(data));\n    });\n  };\n};\n\n//# sourceURL=webpack://react-server/./src/containers/Home/store/actions.js?");
 
 /***/ }),
 
@@ -96,7 +96,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));
   \*****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nvar _Routes = __webpack_require__(/*! ../Routes */ \"./src/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nvar _index = __webpack_require__(/*! ../store/index */ \"./src/store/index.js\");\n\nvar _utill = __webpack_require__(/*! ./utill */ \"./src/server/utill.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\n// 当请求的资源是是一个静态文件时，到public文件夹下面去寻找\n\n// 这里引入react提供用于服务端渲染的方法renderToString，将react组件转换为字符串\napp.use(_express2.default.static(\"public\"));\n// 监听 / 路由\napp.get(\"/*\", function (req, res) {\n  // 如果在这里，我能够拿到异步数据，并填充到store之中\n  // store里面到底填充什么，我们不知道，我们需要根据用户当前请求的地址，和路由，做判断\n  // 如果用户访问 / 路径，我们就拿home组件之中的异步数据\n  // 如果用户访问login，我们就拿login组件的异步数据\n\n  // 路由匹配\n  // matchPath只能\n  // 这里使用更高级的实现方式来做,不用matchPath了，使用matchRoutes\n  // 让matchRoutes里面匹配到的组件的loadData都执行一遍\n\n  var store = (0, _index.getStore)();\n  var storePromise = [];\n  var matchedRoutes = (0, _reactRouterConfig.matchRoutes)(_Routes2.default, req.path);\n  matchedRoutes.forEach(function (item) {\n    if (item.route.loadData) {\n      storePromise.push(item.route.loadData(store));\n    }\n  });\n  Promise.all(storePromise).then(function () {\n    res.send((0, _utill.render)(req, store));\n  });\n});\nvar server = app.listen(3000);\n\n//# sourceURL=webpack://react-server/./src/server/index.js?");
+eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nvar _expressHttpProxy = __webpack_require__(/*! express-http-proxy */ \"express-http-proxy\");\n\nvar _expressHttpProxy2 = _interopRequireDefault(_expressHttpProxy);\n\nvar _Routes = __webpack_require__(/*! ../Routes */ \"./src/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nvar _index = __webpack_require__(/*! ../store/index */ \"./src/store/index.js\");\n\nvar _utill = __webpack_require__(/*! ./utill */ \"./src/server/utill.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\n// 当请求的资源是是一个静态文件时，到public文件夹下面去寻找\n\n// 这里引入react提供用于服务端渲染的方法renderToString，将react组件转换为字符串\napp.use(_express2.default.static(\"public\"));\n\n// 请求转发\n// 来自客户端的请求不要直接请求服务器\napp.use(\"/api\", (0, _expressHttpProxy2.default)(\"http://47.95.113.63\", {\n  proxyReqPathResolver: function proxyReqPathResolver(req) {\n    return \"/ssr/api\" + req.url;\n  }\n}));\n\n// 监听 / 路由\napp.get(\"/*\", function (req, res) {\n  // 如果在这里，我能够拿到异步数据，并填充到store之中\n  // store里面到底填充什么，我们不知道，我们需要根据用户当前请求的地址，和路由，做判断\n  // 如果用户访问 / 路径，我们就拿home组件之中的异步数据\n  // 如果用户访问login，我们就拿login组件的异步数据\n\n  // 路由匹配\n  // matchPath只能\n  // 这里使用更高级的实现方式来做,不用matchPath了，使用matchRoutes\n  // 让matchRoutes里面匹配到的组件的loadData都执行一遍\n\n  var store = (0, _index.getStore)();\n  // const storePromise = [];\n  // const matchedRoutes = matchRoutes(Routes, req.path);\n  // matchedRoutes.forEach((item) => {\n  //   if (item.route.loadData) {\n  //     storePromise.push(item.route.loadData(store));\n  //   }\n  // });\n  // Promise.all(storePromise).then(() => {\n  res.send((0, _utill.render)(req, store));\n  // });\n});\nvar server = app.listen(3000);\n\n//# sourceURL=webpack://react-server/./src/server/index.js?");
 
 /***/ }),
 
@@ -137,6 +137,16 @@ module.exports = require("axios");
 /***/ ((module) => {
 
 module.exports = require("express");
+
+/***/ }),
+
+/***/ "express-http-proxy":
+/*!*************************************!*\
+  !*** external "express-http-proxy" ***!
+  \*************************************/
+/***/ ((module) => {
+
+module.exports = require("express-http-proxy");
 
 /***/ }),
 

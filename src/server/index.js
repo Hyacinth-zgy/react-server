@@ -1,13 +1,26 @@
 import express from "express";
 import React from "react";
 import { matchRoutes } from "react-router-config";
+import proxy from "express-http-proxy";
 import Routes from "../Routes";
-import {getStore} from "../store/index";
+import { getStore } from "../store/index";
 // 这里引入react提供用于服务端渲染的方法renderToString，将react组件转换为字符串
 import { render } from "./utill";
 const app = express();
 // 当请求的资源是是一个静态文件时，到public文件夹下面去寻找
 app.use(express.static("public"));
+
+// 请求转发
+// 来自客户端的请求不要直接请求服务器
+app.use(
+  "/api",
+  proxy("http://47.95.113.63", {
+    proxyReqPathResolver: function (req) {
+      return "/ssr/api" + req.url;
+    },
+  })
+);
+
 // 监听 / 路由
 app.get("/*", function (req, res) {
   // 如果在这里，我能够拿到异步数据，并填充到store之中
@@ -21,15 +34,15 @@ app.get("/*", function (req, res) {
   // 让matchRoutes里面匹配到的组件的loadData都执行一遍
 
   const store = getStore();
-  const storePromise = [];
-  const matchedRoutes = matchRoutes(Routes, req.path);
-  matchedRoutes.forEach((item) => {
-    if (item.route.loadData) {
-      storePromise.push(item.route.loadData(store));
-    }
-  });
-  Promise.all(storePromise).then(() => {
-    res.send(render(req, store));
-  });
+  // const storePromise = [];
+  // const matchedRoutes = matchRoutes(Routes, req.path);
+  // matchedRoutes.forEach((item) => {
+  //   if (item.route.loadData) {
+  //     storePromise.push(item.route.loadData(store));
+  //   }
+  // });
+  // Promise.all(storePromise).then(() => {
+  res.send(render(req, store));
+  // });
 });
 const server = app.listen(3000);
