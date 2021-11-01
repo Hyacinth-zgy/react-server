@@ -39,7 +39,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   getHomeList() {
-    dispatch(getHomeList());
+    dispatch(getHomeList(true));
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
