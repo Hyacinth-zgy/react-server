@@ -30,7 +30,7 @@ const Home = (props) => {
 
 Home.loadData = function (store) {
   // 在这里加载服务端的异步数据
-  return store.dispatch(getHomeList());
+  return store.dispatch(getHomeList(true));
 };
 
 const mapStateToProps = (state) => ({
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   getHomeList() {
-    dispatch(getHomeList(true));
+    dispatch(getHomeList);
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
