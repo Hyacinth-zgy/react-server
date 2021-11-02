@@ -16,3 +16,13 @@ export const getHeaderInfo = () => {
       });
   };
 };
+
+export const login = () => {
+  return (dispatch, _getState, axiosIntance) => {
+    return axiosIntance
+      .get("/api/login.json?secret=PP87ANTIPIRATE")
+      .then((res) => {
+        console.log(res);
+      });
+  };
+};
