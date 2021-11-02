@@ -8,7 +8,6 @@ export function setList(list) {
 export const getHomeList = () => {
   // http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE
   return (dispatch, _getState, axiosIntance) => {
-    console.log(axiosIntance);
     // 浏览器运行
     // /api/news.json = http://localhost:3000/api/news.json
     // 服务端运行

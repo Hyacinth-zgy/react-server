@@ -85,4 +85,4 @@ React做服务器端渲染的时候，服务端只会将基础代码渲染出来
 然后使用 getClientStore 这个方法给client端store 初始化数据
 
 # 当我们调用接口的时候，要区分服务端和客户端，我们可以用传参的方式来确定是服务端还是客户端，但是都不是做好的方式
-# 可以使用redux-thunk提供的withExtraArgument，这可以让异步的action接收到参数，然后在客户端创建store和服务端创建store时传入不同的请求实例
+可以使用redux-thunk提供的withExtraArgument，这可以让异步的action接收到参数，然后在客户端创建store和服务端创建store时传入不同的请求实例
