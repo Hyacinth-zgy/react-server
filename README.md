@@ -89,3 +89,28 @@ React做服务器端渲染的时候，服务端只会将基础代码渲染出来
 
 # react 多级路由
 什么叫做多级路由： 当用户访问凡是带根路径 /  的路由，都让Header组件展示出来（主要是解决不用在每个组件都引入Header组件的问题）
+renderRoutes方法可以实现渲染多级路由
+如图配置：
+const routes = [
+  {
+    path: "/",
+    component: App,
+    routes: [
+      {
+        path: "/",
+        component: Home,
+        exact: true,
+        loadData: Home.loadData,
+        key: "home",
+      },
+      {
+        path: "/login",
+        component: Login,
+        exact: true,
+        key: "login",
+      },
+    ],
+  },
+];
+
+使用renderRoutes(routes)，会将一级路由依次渲染，这里的一级路由只有 App 组件，然后改方法会将 routes属性传入APP组件的prop，这样就可以又在APP组件中渲染子组件，如果子组件中还有子组件，可以一直下去
