@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./containers/component/Header";
+import Header from "./containers/component/Header/index";
 import { renderRoutes } from "react-router-config";
 
 const App = (props) => {
