@@ -15,7 +15,6 @@ const Home = (props) => {
   }, []);
   return (
     <div>
-      <Header></Header>
       <button
         onClick={() => {
           alert("click1");

@@ -1,10 +1,12 @@
 import React from "react";
-import Header from "../component/Header";
+import Header from "./containers/component/Header";
+import { renderRoutes } from "react-router-config";
 
-const App = () => {
+const App = (props) => {
   return (
     <div>
       <Header></Header>
+      {renderRoutes(props.route.routes)}
     </div>
   );
 };
