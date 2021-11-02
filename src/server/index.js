@@ -1,5 +1,4 @@
 import express from "express";
-import React from "react";
 import { matchRoutes } from "react-router-config";
 import proxy from "express-http-proxy";
 import Routes from "../Routes";
