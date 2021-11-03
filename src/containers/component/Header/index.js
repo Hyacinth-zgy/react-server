@@ -10,12 +10,10 @@ const Header = (props) => {
       {props.login ? (
         <Fragment>
           <Link to="/login">翻译列表</Link>
-          <Link to="/login">退出</Link>
+          <span onClick={props.handleLoginOut}>退出</span>
         </Fragment>
       ) : (
-        <div to="/login" onClick={props.handleLogin}>
-          登录
-        </div>
+        <div onClick={props.handleLogin}>登录</div>
       )}
     </div>
   );
@@ -25,6 +23,9 @@ const mapDispatch = (dispatch) => {
   return {
     handleLogin() {
       dispatch(actions.login());
+    },
+    handleLoginOut() {
+      dispatch(actions.loginOut());
     },
   };
 };

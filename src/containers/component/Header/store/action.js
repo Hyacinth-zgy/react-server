@@ -22,7 +22,17 @@ export const login = () => {
     return axiosIntance
       .get("/api/login.json?secret=PP87ANTIPIRATE")
       .then((res) => {
-        console.log(res);
+        dispatch(changeLogin(res.data.data.login));
+      });
+  };
+};
+
+export const loginOut = () => {
+  return (dispatch, _getState, axiosIntance) => {
+    return axiosIntance
+      .get("/api/logout.json?secret=PP87ANTIPIRATE")
+      .then((res) => {
+        dispatch(changeLogin(res.data.data.login));
       });
   };
 };
