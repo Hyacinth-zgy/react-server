@@ -8,10 +8,10 @@ const reducer = combineReducers({
   home: homeReducer,
   header: headReducer,
 });
-export const getStore = function () {
+export const getStore = function (req) {
   return createStore(
     reducer,
-    applyMiddleware(thunk.withExtraArgument(serverRequest))
+    applyMiddleware(thunk.withExtraArgument(serverRequest(req)))
   );
 };
 

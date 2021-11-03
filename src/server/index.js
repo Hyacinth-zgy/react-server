@@ -43,7 +43,7 @@ app.get("/*", function (req, res) {
   // 这里使用更高级的实现方式来做,不用matchPath了，使用matchRoutes
   // 让matchRoutes里面匹配到的组件的loadData都执行一遍
 
-  const store = getStore();
+  const store = getStore(req);
   const storePromise = [];
   const matchedRoutes = matchRoutes(Routes, req.path);
   matchedRoutes.forEach((item) => {
