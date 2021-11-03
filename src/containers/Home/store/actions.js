@@ -21,7 +21,7 @@ export const getHomeList = () => {
     //   request = serverRequest;
     // }
     return axiosIntance
-      .get("/api/news.json?secret=PP87ANTIPIRATE")
+      .get("/api/news.json")
       .then((res) => {
         const data = res.data.data;
         dispatch(setList(data));

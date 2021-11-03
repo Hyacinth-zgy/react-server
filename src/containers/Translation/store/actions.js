@@ -8,7 +8,7 @@ const setTranslationsList = (value) => {
 export const getTranslationList = () => {
   return (dispatch, _getState, axiosIntance) => {
     return axiosIntance
-      .get("/api/translations.json?secret=PP87ANTIPIRATE")
+      .get("/api/translations.json")
       .then((res) => {
         if (res.data.success) {
           dispatch(setTranslationsList(res.data.data));

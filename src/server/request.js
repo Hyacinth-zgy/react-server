@@ -8,6 +8,9 @@ const createInstance = (req) => {
     headers: {
       cookie: req.get("cookie") || "",
     },
+    params: {
+      secret: "PP87ANTIPIRATE",
+    },
   });
   return instance;
 };

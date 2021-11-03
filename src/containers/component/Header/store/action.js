@@ -9,30 +9,24 @@ const changeLogin = (value) => {
 
 export const getHeaderInfo = () => {
   return (dispatch, _getState, axiosIntance) => {
-    return axiosIntance
-      .get("/api/isLogin.json?secret=PP87ANTIPIRATE")
-      .then((res) => {
-        dispatch(changeLogin(res.data.data.login));
-      });
+    return axiosIntance.get("/api/isLogin.json").then((res) => {
+      dispatch(changeLogin(res.data.data.login));
+    });
   };
 };
 
 export const login = () => {
   return (dispatch, _getState, axiosIntance) => {
-    return axiosIntance
-      .get("/api/login.json?secret=PP87ANTIPIRATE")
-      .then((res) => {
-        dispatch(changeLogin(res.data.data.login));
-      });
+    return axiosIntance.get("/api/login.json").then((res) => {
+      dispatch(changeLogin(res.data.data.login));
+    });
   };
 };
 
 export const loginOut = () => {
   return (dispatch, _getState, axiosIntance) => {
-    return axiosIntance
-      .get("/api/logout.json?secret=PP87ANTIPIRATE")
-      .then((res) => {
-        dispatch(changeLogin(res.data.data.login));
-      });
+    return axiosIntance.get("/api/logout.json").then((res) => {
+      dispatch(changeLogin(res.data.data.login));
+    });
   };
 };
