@@ -2,6 +2,7 @@ import { Route } from "react-router-dom";
 import App from "./App";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
+import Translation from "./containers/Translation";
 
 // export default (
 //   <div>
@@ -29,6 +30,12 @@ export default [
         component: Login,
         exact: true,
         key: "login",
+      },
+      {
+        path: "/translation",
+        component: Translation,
+        exact: true,
+        key: "translation",
       },
     ],
   },

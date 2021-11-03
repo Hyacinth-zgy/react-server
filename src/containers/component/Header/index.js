@@ -9,7 +9,7 @@ const Header = (props) => {
       <br />
       {props.login ? (
         <Fragment>
-          <Link to="/login">翻译列表</Link>
+          <Link to="/translation">翻译列表</Link>
           <span onClick={props.handleLoginOut}>退出</span>
         </Fragment>
       ) : (
