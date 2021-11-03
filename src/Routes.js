@@ -36,6 +36,7 @@ export default [
         component: Translation,
         exact: true,
         key: "translation",
+        loadData: Translation.loadData,
       },
     ],
   },

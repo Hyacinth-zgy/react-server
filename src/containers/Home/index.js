@@ -9,6 +9,7 @@ function setList(data) {
 }
 const Home = (props) => {
   useEffect(() => {
+    console.log(1)
     if (!props.newsList.length) {
       props.getHomeList();
     }
