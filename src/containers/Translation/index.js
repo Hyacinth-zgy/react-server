@@ -2,6 +2,7 @@ import React from "react";
 import { getTranslationList } from "./store/actions";
 import { connect } from "react-redux";
 import { useEffect } from "react";
+import { Redirect } from "react-router-dom";
 const Translation = (props) => {
   useEffect(() => {
     console.log(1);
@@ -11,11 +12,13 @@ const Translation = (props) => {
   }, []);
   return (
     <div>
-      <div>
-        {props.translationList.map((item) => {
+      {props.login ? (
+        props.translationList.map((item) => {
           return <div key={item.id}>{item.title}</div>;
-        })}
-      </div>
+        })
+      ) : (
+        <Redirect to="/" />
+      )}
     </div>
   );
 };
@@ -33,6 +36,7 @@ const mapActionsToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     translationList: state.translation.translationList,
+    login: state.header.login,
   };
 };
 export default connect(mapStateToProps, mapActionsToProps)(Translation);
