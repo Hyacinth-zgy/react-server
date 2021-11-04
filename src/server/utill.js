@@ -21,10 +21,14 @@ export const render = function (req, store, context) {
       </StaticRouter>
     </Provider>
   );
+  const css = context.css;
   return `
   <html>
     <head>
       <title>ssr</title>
+      <style>
+      ${css}
+      </style>
     </head>
     <body>
       <div id="root">${content}</div>

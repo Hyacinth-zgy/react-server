@@ -9,6 +9,20 @@ const serverConfig = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build"),
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          "isomorphic-style-loader",
+          {
+            loader: "css-loader",
+            options: { modules: { localIdentName: "[path]" }, esModule: false },
+          },
+        ],
+      },
+    ],
+  },
   externals: [nodeExternals()],
   mode: "development",
 };

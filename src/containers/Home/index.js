@@ -2,14 +2,21 @@ import React, { useEffect } from "react";
 import Header from "../component/Header";
 import { connect } from "react-redux";
 import { getHomeList } from "../Home/store/actions";
+import styles from "./index.css";
 function setList(data) {
   return data.map((item) => {
-    return <div key={item.id}>{item.title}</div>;
+    return (
+      <div className={styles.red} key={item.id}>
+        {item.title}
+      </div>
+    );
   });
 }
 const Home = (props) => {
+  if (props.staticContext) {
+    props.staticContext.css = styles._getCss();
+  }
   useEffect(() => {
-    console.log(1)
     if (!props.newsList.length) {
       props.getHomeList();
     }

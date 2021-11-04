@@ -131,4 +131,33 @@ const routes = [
 在NoteFond组件的里面，假如该组件被访问，就在context中添加标记属性，然后在res.send（）返回页面时设置404状态码
 该context只有在服务端渲染被传递，在客户端渲染会不有，所以要判断context存在与否，具体实现在NoteFound组件内部
 
+# css支持,具体看client 和 server的配置
+# css服务端渲染即首先要将css得到,然后将起放在html分钟中返回来
+import styles from "./index.css";
+如果为服务端
+  if (props.staticContext) {
+    props.staticContext.css = styles._getCss();
+  }
+
+ const css = context.css;
+  return `
+  <html>
+    <head>
+      <title>ssr</title>
+      <style>
+      ${css}
+      </style>
+    </head>
+    <body>
+      <div id="root">${content}</div>
+      <script>
+        window.context = {
+          state: ${JSON.stringify(store.getState())}
+        }
+      </script>
+      <script src='/index.js'></script>
+    </body>
+  </html>
+`;
+
 

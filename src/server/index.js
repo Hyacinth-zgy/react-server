@@ -7,6 +7,7 @@ import { getStore } from "../store/index";
 import { render } from "./utill";
 import e from "express";
 import { Redirect } from "react-router";
+import { compose } from "redux";
 const app = express();
 // 当请求的资源是是一个静态文件时，到public文件夹下面去寻找
 app.use(express.static("public"));
@@ -59,6 +60,7 @@ app.get("/*", function (req, res) {
   Promise.all(storePromise).then(() => {
     const context = {};
     const html = render(req, store, context);
+    console.log(context);
     if (context.action === "REPLACE") {
       // </Redirect> 只会在客户端被执行
       // 但是服务端渲染的是时候，如果有<Redirect></Redirect>组件的时候，react-router会往context中添加action属性为"REPLACE"，所以利用这个进行判断
