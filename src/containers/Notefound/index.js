@@ -5,7 +5,9 @@ class NoteFound extends Component {
     super();
   }
   render() {
-    console.log(this.props);
+    if (this.props.staticContext) {
+      this.props.staticContext.NoteFound = true;
+    }
     return (
       <div>
         <div>这里是404页面</div>

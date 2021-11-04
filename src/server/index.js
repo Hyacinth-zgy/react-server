@@ -52,7 +52,14 @@ app.get("/*", function (req, res) {
     }
   });
   Promise.all(storePromise).then(() => {
-    res.send(render(req, store));
+    const context = {};
+    const html = render(req, store, context);
+    if (context.NoteFound) {
+      res.status(404);
+      res.send(html);
+    } else {
+      res.send(html);
+    }
   });
 });
 const server = app.listen(3000);

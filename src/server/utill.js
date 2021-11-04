@@ -5,12 +5,12 @@ import Routes from "../Routes";
 import { Provider } from "react-redux";
 // 这里用来渲染多级路由
 import { renderRoutes } from "react-router-config";
-export const render = function (req, store) {
+export const render = function (req, store, context) {
   // 在服务端使用redux
   // 传入react组件到renderToString
   const content = renderToString(
     <Provider store={store}>
-      <StaticRouter location={req.path} context={{ name: "zgy" }}>
+      <StaticRouter location={req.path} context={context}>
         <div>
           {/* {Routes.map((route) => {
             return <Route {...route}></Route>;
