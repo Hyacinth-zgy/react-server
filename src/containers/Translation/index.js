@@ -22,9 +22,9 @@ const Translation = (props) => {
   );
 };
 
-Translation.loadData = (store) => {
-  return store.dispatch(getTranslationList());
-};
+// Translation.loadData = (store) => {
+//   return store.dispatch(getTranslationList());
+// };
 const mapActionsToProps = (dispatch) => {
   return {
     getList() {
@@ -38,4 +38,12 @@ const mapStateToProps = (state) => {
     login: state.header.login,
   };
 };
-export default connect(mapStateToProps, mapActionsToProps)(Translation);
+
+const exportTranslation = connect(
+  mapStateToProps,
+  mapActionsToProps
+)(Translation);
+exportTranslation.loadData = (store) => {
+  return store.dispatch(getTranslationList());
+};
+export default exportTranslation;

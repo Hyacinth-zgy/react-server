@@ -35,10 +35,10 @@ const Home = (props) => {
   );
 };
 
-Home.loadData = function (store) {
-  // 在这里加载服务端的异步数据
-  return store.dispatch(getHomeList());
-};
+// Home.loadData = function (store) {
+//   // 在这里加载服务端的异步数据
+//   return store.dispatch(getHomeList());
+// };
 
 const mapStateToProps = (state) => ({
   name: state.home.name,
@@ -49,4 +49,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getHomeList);
   },
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const exportHome = connect(mapStateToProps, mapDispatchToProps)(Home);
+exportHome.loadData = function (store) {
+  // 在这里加载服务端的异步数据
+  return store.dispatch(getHomeList());
+};
+export default exportHome;
