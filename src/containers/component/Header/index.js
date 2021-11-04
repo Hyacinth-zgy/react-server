@@ -2,9 +2,14 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { actions } from "./store";
+import styles from "./index.css";
 const Header = (props) => {
+  console.log(props);
+  if (props.staticContext) {
+    props.staticContext.css.push(styles._getCss());
+  }
   return (
-    <div>
+    <div className={styles.blue}>
       <Link to="/">首页</Link>
       <br />
       {props.login ? (

@@ -21,7 +21,7 @@ export const render = function (req, store, context) {
       </StaticRouter>
     </Provider>
   );
-  const css = context.css;
+  const css = context.css.join("\n");
   return `
   <html>
     <head>

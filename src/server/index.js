@@ -59,6 +59,7 @@ app.get("/*", function (req, res) {
   });
   Promise.all(storePromise).then(() => {
     const context = {};
+    context.css = [];
     const html = render(req, store, context);
     console.log(context);
     if (context.action === "REPLACE") {

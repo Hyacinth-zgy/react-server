@@ -160,4 +160,6 @@ import styles from "./index.css";
   </html>
 `;
 
+# 多组件渲染css
+contect.css 需要变成数组
 

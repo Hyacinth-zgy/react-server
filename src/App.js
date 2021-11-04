@@ -6,7 +6,7 @@ import { actions } from "./containers/component/Header/store/index";
 const App = (props) => {
   return (
     <div>
-      <Header></Header>
+      <Header staticContext={props.staticContext}></Header>
       {renderRoutes(props.route.routes)}
     </div>
   );
