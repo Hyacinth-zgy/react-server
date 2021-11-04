@@ -50,13 +50,15 @@ app.get("/*", function (req, res) {
   const matchedRoutes = matchRoutes(Routes, req.path);
   matchedRoutes.forEach((item) => {
     if (item.route.loadData) {
-      storePromise.push(item.route.loadData(store));
+      const promise = new Promise((resolve, reject) => {
+        item.route.loadData(store).then(resolve).catch(resolve);
+      });
+      storePromise.push(promise);
     }
   });
   Promise.all(storePromise).then(() => {
     const context = {};
     const html = render(req, store, context);
-    console.log(context);
     if (context.action === "REPLACE") {
       // </Redirect> 只会在客户端被执行
       // 但是服务端渲染的是时候，如果有<Redirect></Redirect>组件的时候，react-router会往context中添加action属性为"REPLACE"，所以利用这个进行判断
