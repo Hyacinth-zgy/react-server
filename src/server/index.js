@@ -58,7 +58,9 @@ app.get("/*", function (req, res) {
     const html = render(req, store, context);
     console.log(context);
     if (context.action === "REPLACE") {
-      // 服务端渲染的是时候，如果有<Redirect></Redirect>组件的时候，react-router会往context中添加action属性为"REPLACE"，所以利用这个进行判断
+      // </Redirect> 只会在客户端被执行
+      // 但是服务端渲染的是时候，如果有<Redirect></Redirect>组件的时候，react-router会往context中添加action属性为"REPLACE"，所以利用这个进行判断
+
       res.redirect(301, context.url);
     } else if (context.NoteFound) {
       res.status(404);
