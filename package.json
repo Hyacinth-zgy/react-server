@@ -30,6 +30,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^6.5.1",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.3",
     "npm-run-all": "^4.1.5",
@@ -40,9 +41,13 @@
     "react-router-dom": "^5.3.0",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
+    "style-loader": "^3.3.1",
     "webpack": "^5.58.2",
     "webpack-cli": "^4.9.0",
     "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^3.0.0"
+  },
+  "devDependencies": {
+    "isomorphic-style-loader": "^5.3.2"
   }
 }
