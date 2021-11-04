@@ -5,6 +5,8 @@ import Routes from "../Routes";
 import { getStore } from "../store/index";
 // 这里引入react提供用于服务端渲染的方法renderToString，将react组件转换为字符串
 import { render } from "./utill";
+import e from "express";
+import { Redirect } from "react-router";
 const app = express();
 // 当请求的资源是是一个静态文件时，到public文件夹下面去寻找
 app.use(express.static("public"));
@@ -54,7 +56,11 @@ app.get("/*", function (req, res) {
   Promise.all(storePromise).then(() => {
     const context = {};
     const html = render(req, store, context);
-    if (context.NoteFound) {
+    console.log(context);
+    if (context.action === "REPLACE") {
+      // 服务端渲染的是时候，如果有<Redirect></Redirect>组件的时候，react-router会往context中添加action属性为"REPLACE"，所以利用这个进行判断
+      res.redirect(301, context.url);
+    } else if (context.NoteFound) {
       res.status(404);
       res.send(html);
     } else {
