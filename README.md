@@ -127,3 +127,8 @@ const routes = [
 3.2nodeJS服务器进行服务端渲染
 3.进行服务端渲染，首先要去api服务器上获取数据，但是nodeJS到api服务这一层面上没有携带cookkie
 
+# 使用服务端StaticRouter 传递的context来实现当用户访问不存在的页面时返回404页面
+在NoteFond组件的里面，假如该组件被访问，就在context中添加标记属性，然后在res.send（）返回页面时设置404状态码
+该context只有在服务端渲染被传递，在客户端渲染会不有，所以要判断context存在与否，具体实现在NoteFound组件内部
+
+
