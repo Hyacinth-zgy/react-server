@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { actions } from "./store";
 import styles from "./index.css";
+import WithStyle from "../../../WithStyle";
 const Header = (props) => {
-  console.log(props);
-  if (props.staticContext) {
-    props.staticContext.css.push(styles._getCss());
-  }
+  // if (props.staticContext) {
+  //   props.staticContext.css.push(styles._getCss());
+  // }
   return (
     <div className={styles.blue}>
       <Link to="/">首页</Link>
@@ -39,4 +39,4 @@ const mapStateToProps = (state) => {
     login: state.header.login,
   };
 };
-export default connect(mapStateToProps, mapDispatch)(Header);
+export default connect(mapStateToProps, mapDispatch)(WithStyle(Header,styles));
