@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 const Translation = (props) => {
   useEffect(() => {
-    console.log(1);
     if (props.translationList.length === 0) {
       props.getList();
     }

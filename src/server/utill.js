@@ -10,7 +10,7 @@ export const render = function (req, store) {
   // 传入react组件到renderToString
   const content = renderToString(
     <Provider store={store}>
-      <StaticRouter location={req.path} context={{}}>
+      <StaticRouter location={req.path} context={{ name: "zgy" }}>
         <div>
           {/* {Routes.map((route) => {
             return <Route {...route}></Route>;

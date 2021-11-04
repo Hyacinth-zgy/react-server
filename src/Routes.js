@@ -3,6 +3,7 @@ import App from "./App";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 import Translation from "./containers/Translation";
+import NoteFound from "./containers/Notefound";
 
 // export default (
 //   <div>
@@ -37,6 +38,9 @@ export default [
         exact: true,
         key: "translation",
         loadData: Translation.loadData,
+      },
+      {
+        component: NoteFound,
       },
     ],
   },
